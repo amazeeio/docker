@@ -20,5 +20,7 @@
 ## SSH Agent
 
 Per default your SSH Key at `~/.ssh/id_rsa` is added to the Docker containers.
+
 If you have a passphrase protected SSH key or need another SSH Key, run:
+
 `docker-compose run ssh-agent_add_key ssh-add /ssh/id_rsa` (replace `id_rsa` with the ssh private key you would like to add)
