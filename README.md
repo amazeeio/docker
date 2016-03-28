@@ -5,6 +5,10 @@
 - [AmazeeIO Cachalot](https://github.com/AmazeeIO/cachalot)
 - docker compose
 
+## Installation
+
+- Clone this repo somehwere on your local computer
+
 ## Configuration
 
 - Edit `docker-compose.yml` to your needs
