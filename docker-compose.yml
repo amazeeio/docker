@@ -1,0 +1,12 @@
+# Create here the services you would like to have
+version: '2'
+services:
+  asdf_com: # Give a unique name
+    image: amazeeio/drupal7:php56-basic
+    container_name: asdf_com # Give the same name as the service
+    environment:
+      VIRTUAL_HOST: asdf.com.docker.amazee.io # Give the same name as the service
+    volumes:
+      - /Users/Michael/git/d7-starter:/var/www/drupal/public_html # Change the first part '/Users/Michael/git/d7-starter' to the absolute path where the Drupal is
+    volumes_from: # Just leave that like it is
+      - ssh-agent # Just leave that like it is
