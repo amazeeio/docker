@@ -17,6 +17,12 @@
 
 - `docker exec -itu drupal asdf_com bash` (replace `asdf_com` with the docker container you want to connect to)
 
+## Update Images
+
+If you need to update the Docker Images to the newest version from the Docker Hub run:
+- `docker-compose pull`
+- `docker-compose up -d`
+
 ## SSH Agent
 
 Per default your SSH Key at `~/.ssh/id_rsa` is added to the Docker containers.
