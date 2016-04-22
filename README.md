@@ -9,6 +9,10 @@ This docker based Drupal Development environment consists of two parts:
 - [amazee.io Cachalot](https://github.com/AmazeeIO/cachalot)
 - [docker-compose](https://docs.docker.com/compose/install/)
 
+## Installation
+
+- Clone this repo somehwere on your local computer
+
 ## Start
 
 First start the shared containers with:
@@ -28,6 +32,12 @@ To run commands like drush, git or other things within the container, you need t
 Regularly you would do that via SSH, but we're using the docker internal things here:
 
 - `docker exec -itu drupal asdf_com bash` (replace `asdf_com` with the docker container you want to connect to)
+
+## Update Images
+
+If you need to update the Docker Images to the newest version from the Docker Hub run:
+- `docker-compose pull`
+- `docker-compose up -d`
 
 ## SSH Agent
 
