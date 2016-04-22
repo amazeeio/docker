@@ -1,7 +1,8 @@
-# amazee.io Local Drupal Docker Environment
+# amazee.io local Drupal Docker dev environment
 
 This docker based Drupal Development environment consists of two parts:
-1. The shared docker containers for HAProxy and the SSH Agent, these are used by all other containers in order to properly work. They are started with the `docker-compose.yml` in the root folder
+
+1. The shared docker containers for HAProxy and the SSH Agent, these are used by all other containers in order to properly work. They are started with the `docker-compose.yml` in the repo folder
 2. Separate `docker-compose.yml` files for each site, these can be either copied directly into a Drupal site and started there or started directly from here
 
 ## Prerequirements
@@ -12,12 +13,11 @@ This docker based Drupal Development environment consists of two parts:
 ## Installation
 
 - Clone this repo somehwere on your local computer
+- Start the shared containers inside the cloned repo:
 
-## Start
-
-First start the shared containers with:
-
-- `docker-compose up -d`
+	```
+	docker-compose up -d
+	```
 
 ## Usage
 
@@ -36,8 +36,9 @@ Regularly you would do that via SSH, but we're using the docker internal things 
 ## Update Images
 
 If you need to update the Docker Images to the newest version from the Docker Hub run:
-- `docker-compose pull`
-- `docker-compose up -d`
+
+	docker-compose pull
+	docker-compose up -d
 
 ## SSH Agent
 
@@ -45,4 +46,6 @@ Per default your SSH Key at `~/.ssh/id_rsa` is added to the Docker containers.
 
 If you have a passphrase protected SSH key or need another SSH Key, run this command from the this directory (not inside the Drupal directory, also you don't need to do that for each Drupal site, just once)
 
-`docker-compose run --rm ssh-agent_add_key ssh-add /ssh/id_rsa` (replace `id_rsa` with the ssh private key you would like to add)
+	docker-compose run --rm ssh-agent_add_key ssh-add /ssh/id_rsa
+
+(replace `id_rsa` with the ssh private key you would like to add)
