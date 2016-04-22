@@ -9,12 +9,14 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    network_mode: "bridge"
+    network_mode: bridge
+    restart: always
 
   ssh-agent:
     image: amazeeio/ssh-agent
     container_name: ssh-agent
-    network_mode: "bridge"
+    network_mode: bridge
+    restart: always
 
   ssh-agent_add_key:
     image: amazeeio/ssh-agent
@@ -23,7 +25,8 @@ services:
     depends_on:
       - ssh-agent
     volumes_from:
-      - container:ssh-agent
+      - ssh-agent
     volumes:
       - ~/.ssh:/ssh
-    network_mode: "bridge"
+    network_mode: bridge
+    restart: on-failure:1
