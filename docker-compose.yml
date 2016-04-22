@@ -1,12 +1,29 @@
-# Create here the services you would like to have
+## This file should not be changed, it contains the required docker containers so that the amazee.io Docker environmnet runs propperly
 version: '2'
 services:
-  asdf_com: # Give a unique name
-    image: amazeeio/drupal7:php56-basic
-    container_name: asdf_com # Give the same name as the service
-    environment:
-      VIRTUAL_HOST: asdf.com.docker.amazee.io # Give the same name as the service
+  haproxy:
+    image: amazeeio/haproxy
+    container_name: haproxy
     volumes:
-      - /Users/Michael/git/d7-starter:/var/www/drupal/public_html # Change the first part '/Users/Michael/git/d7-starter' to the absolute path where the Drupal is
-    volumes_from: # Just leave that like it is
-      - ssh-agent # Just leave that like it is
+      - /var/run/docker.sock:/tmp/docker.sock
+    ports:
+      - "80:80"
+      - "443:443"
+    network_mode: "bridge"
+
+  ssh-agent:
+    image: amazeeio/ssh-agent
+    container_name: ssh-agent
+    network_mode: "bridge"
+
+  ssh-agent_add_key:
+    image: amazeeio/ssh-agent
+    container_name: ssh-agent_fill
+    command: ssh-add /ssh/id_rsa
+    depends_on:
+      - ssh-agent
+    volumes_from:
+      - container:ssh-agent
+    volumes:
+      - ~/.ssh:/ssh
+    network_mode: "bridge"
