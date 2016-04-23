@@ -8,12 +8,13 @@ services:
     hostname: &hostname changeme.net.docker.amazee.io
 
     environment:
-      # If you like to have php with xdebug running, uncomment this:
-      #XDEBUG: "true"
 
       # If you would like to use blackfire.io, uncomment and add your server credentials:
       #BLACKFIRE_SERVER_ID: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
       #BLACKFIRE_SERVER_TOKEN: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+      # APC Support is by default enabled, but in some cases it can make issues, uncomment to disable:
+      #APC: 0
 
 
 
@@ -26,6 +27,6 @@ services:
     volumes_from:
       - container:ssh-agent
     container_name: *hostname
-    network_mode: "bridge"
+    network_mode: bridge
     ports:
       - "3306"
