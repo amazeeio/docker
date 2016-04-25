@@ -16,6 +16,9 @@ services:
       # APC Support is by default enabled, but in some cases it can make issues, change to 0 to disable:
       APC: 1
 
+      # Do not change:
+      VIRTUAL_HOST: *hostname
+
     volumes:
       # per default our solr image is shipped with the 'drupal-4.2-solr-3.x' config, which is good
       # for Drupal 7 and 8 and search_api module. If by any reason you need to change the solr config

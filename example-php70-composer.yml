@@ -23,6 +23,7 @@ services:
 
 ################################################
 ### Do not change anything below here, unless you know what you do
+      VIRTUAL_HOST: *hostname
     image: amazeeio/drupal:php70-basic
     volumes:
       - .:/var/www/drupal/public_html
