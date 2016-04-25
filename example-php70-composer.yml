@@ -17,13 +17,12 @@ services:
       #BLACKFIRE_SERVER_ID: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
       #BLACKFIRE_SERVER_TOKEN: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-      # APC Support is by default enabled, but in some cases it can make issues, uncomment to disable:
-      #APC: 0
+      # APC Support is by default enabled, but in some cases it can make issues, change to 0 to disable:
+      APC: 1
 
 
 ################################################
 ### Do not change anything below here, unless you know what you do
-      VIRTUAL_HOST: *hostname
     image: amazeeio/drupal:php70-basic
     volumes:
       - .:/var/www/drupal/public_html
