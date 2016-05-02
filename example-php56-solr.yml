@@ -30,7 +30,7 @@ services:
       - .:/var/www/drupal/public_html
     image: amazeeio/drupal:php56-solr
     volumes_from:
-      - container:ssh-agent
+      - container:amazeeio-ssh-agent
     container_name: *hostname
     network_mode: bridge
     ports:

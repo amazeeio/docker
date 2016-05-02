@@ -24,7 +24,7 @@ services:
     volumes:
       - .:/var/www/drupal/public_html
     volumes_from:
-      - container:ssh-agent
+      - container:amazeeio-ssh-agent
     container_name: *hostname
     network_mode: bridge
     ports:
