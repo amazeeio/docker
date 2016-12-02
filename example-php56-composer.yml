@@ -17,6 +17,9 @@ services:
       #BLACKFIRE_SERVER_ID: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
       #BLACKFIRE_SERVER_TOKEN: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
+      # If you want to use stage_file_proxy, uncomment following line and add the production url of your website:
+      #AMAZEEIO_PRODUCTION_URL: 'http://example.com'
+
       # APC Support is by default enabled, but in some cases it can make issues, change to 0 to disable:
       APC: 1
 
