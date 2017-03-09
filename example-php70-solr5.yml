@@ -37,13 +37,4 @@ services:
           - solr
   solr:
     image: amazeeio/solr:5
-    entrypoint:
-      - docker-entrypoint.sh
-      - solr-precreate
-      - drupal
-      - /solr-conf
-    ports:
-      - 8983
-    volumes:
-      - ./.amazeeio/solr:/solr-conf
     network_mode: bridge
