@@ -33,7 +33,7 @@ services:
     ports:
       - "3306"
     links:
-          - solr
+      - solr
   solr:
     image: amazeeio/solr:6
     network_mode: bridge

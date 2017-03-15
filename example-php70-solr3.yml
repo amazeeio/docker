@@ -25,8 +25,8 @@ services:
     volumes:
       # per default our solr image is shipped with the 'drupal-4.2-solr-3.x' config, which is good
       # for Drupal 7 and 8 and search_api module. If by any reason you need to change the solr config
-      # put the config files in a folder 'docker/solr' and uncomment this line:
-      #- ./docker/solr:/etc/solr/conf/drupal/conf
+      # put the config files in a folder 'amazeeio/solr' and uncomment this line:
+      #- ./amazeeio/solr:/etc/solr/conf/drupal/conf
 
 ################################################
 ### Do not change anything below here, unless you know what you do
