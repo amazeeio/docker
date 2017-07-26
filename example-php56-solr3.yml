@@ -22,8 +22,7 @@ services:
       # Do not change:
       VIRTUAL_HOST: *hostname
 
-################################################
-### Do not change anything below here, unless you know what you do
+    volumes:
       - .:/var/www/drupal/public_html
     image: amazeeio/drupal:php56-basic
     volumes_from:
@@ -37,7 +36,6 @@ services:
   solr:
     image: amazeeio/solr:3
     network_mode: bridge
-    #volumes:
       # per default our solr image is shipped with a default config (see docs), which is good
       # for Drupal 7 and 8 and search_api module. If by any reason you need to change the solr config
       # put the config files in a folder 'amazeeio/solr-conf' and uncomment this line:
