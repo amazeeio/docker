@@ -5,7 +5,7 @@ services:
     # Choose your URL and hostname for this Docker Container
     # NEEDS to end with '.docker.amazee.io' !
     # DO NOT remove the '&hostname'
-    hostname: &hostname solr.docker.amazee.io
+    hostname: &hostname changeme.net.docker.amazee.io
 
     environment:
 
@@ -19,19 +19,14 @@ services:
       # APC Support is by default enabled, but in some cases it can make issues, change to 0 to disable:
       APC: 1
 
-      # Do not change:
-      VIRTUAL_HOST: *hostname
 
-    volumes:
-      # per default our solr image is shipped with the 'drupal-4.2-solr-3.x' config, which is good
-      # for Drupal 7 and 8 and search_api module. If by any reason you need to change the solr config
-      # put the config files in a folder 'amazeeio/solr' and uncomment this line:
-      #- ./amazeeio/solr:/etc/solr/conf/drupal/conf
 
 ################################################
 ### Do not change anything below here, unless you know what you do
+      VIRTUAL_HOST: *hostname
+    image: amazeeio/drupal:php70-basic
+    volumes:
       - .:/var/www/drupal/public_html
-    image: amazeeio/drupal:php56-basic
     volumes_from:
       - container:amazeeio-ssh-agent
     container_name: *hostname
@@ -41,5 +36,10 @@ services:
     links:
       - solr
   solr:
-    image: amazeeio/solr:3
+    image: amazeeio/solr:5
     network_mode: bridge
+    #volumes:
+      # per default our solr image is shipped with a default config (see docs), which is good
+      # for Drupal 7 and 8 and search_api module. If by any reason you need to change the solr config
+      # put the config files in a folder 'amazeeio/solr-conf' and uncomment this line:
+      #- ./amazeeio/solr-conf:/solr-conf
