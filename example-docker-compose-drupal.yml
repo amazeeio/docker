@@ -1,10 +1,8 @@
-# Create here the Drupal site you would like
 version: '2'
 services:
   drupal:
-    # Choose your URL and hostname for this Docker Container
-    # NEEDS to end with '.docker.amazee.io' !
-    # DO NOT remove the '&hostname'
+    # Set here the hostname by which you will access the docker container. Use
+    # a unique name, ending with `.docker.amazee.io`
     hostname: &hostname changeme.com.docker.amazee.io
 
     environment:
@@ -20,22 +18,28 @@ services:
       APC: 1
 
       VIRTUAL_HOST: *hostname
+
+      # If index.php is not in the root of your repo, uncomment and set the
+      # webroot directory here, for composer projects this is usually 'web'
+      # WEBROOT: web
+
+    # choose which version of php you will use by setting the image. Current options
+    # are 'amazeeio/drupal:php56-basic' and 'amazeeio/drupal:php70-basic'
     image: amazeeio/drupal:php56-basic
     volumes:
-      - .:/var/www/drupal/public_html
+      - .:/var/www/drupal/public_html:delegated
     volumes_from:
       - container:amazeeio-ssh-agent
     container_name: *hostname
-    network_mode: bridge
     ports:
       - "3306"
-    links:
-      - solr
-  solr:
-    image: amazeeio/solr:6
-    network_mode: bridge
-    #volumes:
-      # per default our solr image is shipped with a default config (see docs), which is good
-      # for Drupal 7 and 8 and search_api module. If by any reason you need to change the solr config
-      # put the config files in a folder 'amazeeio/solr-conf' and uncomment this line:
-      #- ./amazeeio/solr-conf:/solr-conf
+    networks:
+      - amazeeio-network
+      - default
+  # When you need solr for your project, uncomment the following service section
+  # solr:
+  #   image: amazeeio/solr:5  # allowed solr versions are 3/5/6
+
+networks:
+  amazeeio-network:
+    external: true
