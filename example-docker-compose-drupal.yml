@@ -36,9 +36,6 @@ services:
     networks:
       - amazeeio-network
       - default
-  # When you need solr for your project, uncomment the following service section
-  # solr:
-  #   image: amazeeio/solr:5  # allowed solr versions are 3/5/6
 
 networks:
   amazeeio-network:
