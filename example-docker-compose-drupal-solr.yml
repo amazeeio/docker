@@ -22,6 +22,9 @@ services:
       # If index.php is not in the root of your repo, uncomment and set the
       # webroot directory here, for composer projects this is usually 'web'
       # WEBROOT: web
+      
+      # Tell our container to do autodiscovery of solr
+      AMAZEEIO_AUTODISCOVERY_SOLR: true
 
     # Choose which version of php you will use by setting the image. Current options
     # are 'amazeeio/drupal:php56-basic' and 'amazeeio/drupal:php70-basic'
