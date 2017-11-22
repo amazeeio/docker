@@ -24,7 +24,7 @@ services:
       # WEBROOT: web
       
       # Tell our container to do autodiscovery of solr
-      AMAZEEIO_AUTODISCOVERY_SOLR: true
+      AMAZEEIO_AUTODISCOVERY_SOLR: 'true'
 
     # Choose which version of php you will use by setting the image. Current options
     # are 'amazeeio/drupal:php56-basic' and 'amazeeio/drupal:php70-basic'
